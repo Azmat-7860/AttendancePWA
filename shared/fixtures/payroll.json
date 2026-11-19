@@ -1,0 +1,91 @@
+{
+  "$schema": "./payroll.schema.json",
+  "version": "1.0.0",
+  "description": "Standard cross-language test vectors for payroll and wage calculations across Java and TypeScript engines",
+  "rounding": "HALF_UP",
+  "currency": "INR",
+  "cases": [
+    {
+      "id": "CASE-A",
+      "description": "Daily wage worker with present days, half days, overtime, and advance recovery",
+      "inputs": {
+        "payType": "DAILY",
+        "dailyWage": "600.00",
+        "standardHours": 8,
+        "otMultiplier": 1.5,
+        "presentDays": 24,
+        "halfDays": 2,
+        "absentDays": 0,
+        "leaveDays": 0,
+        "otHours": 6.0,
+        "advancesRecovered": "3000.00"
+      },
+      "expected": {
+        "hourlyRate": "75.00",
+        "dayPay": "14400.00",
+        "halfDayPay": "600.00",
+        "otHours": 6.0,
+        "otPay": "675.00",
+        "gross": "15675.00",
+        "advancesRecovered": "3000.00",
+        "net": "12675.00"
+      }
+    },
+    {
+      "id": "CASE-B",
+      "description": "Daily wage worker with only present days and advance recovery (no half-days, no overtime)",
+      "inputs": {
+        "payType": "DAILY",
+        "dailyWage": "500.00",
+        "standardHours": 8,
+        "otMultiplier": 1.5,
+        "presentDays": 26,
+        "halfDays": 0,
+        "absentDays": 0,
+        "leaveDays": 0,
+        "otHours": 0.0,
+        "advancesRecovered": "2000.00"
+      },
+      "expected": {
+        "hourlyRate": "62.50",
+        "dayPay": "13000.00",
+        "halfDayPay": "0.00",
+        "otHours": 0.0,
+        "otPay": "0.00",
+        "gross": "13000.00",
+        "advancesRecovered": "2000.00",
+        "net": "11000.00"
+      }
+    },
+    {
+      "id": "CASE-C",
+      "description": "Overtime rounding down to 15-minute steps and HALF_UP monetary rounding (10h 20m worked -> 2h 20m OT -> 2h 15m = 2.25h)",
+      "inputs": {
+        "payType": "DAILY",
+        "dailyWage": "600.00",
+        "standardHours": 8,
+        "otMultiplier": 1.5,
+        "presentDays": 1,
+        "halfDays": 0,
+        "absentDays": 0,
+        "leaveDays": 0,
+        "workedMinutes": 620,
+        "rawOtMinutes": 140,
+        "otStepMinutes": 15,
+        "roundedOtMinutes": 135,
+        "otHours": 2.25,
+        "advancesRecovered": "0.00"
+      },
+      "expected": {
+        "hourlyRate": "75.00",
+        "dayPay": "600.00",
+        "halfDayPay": "0.00",
+        "otHours": 2.25,
+        "otPay": "253.13",
+        "gross": "853.13",
+        "advancesRecovered": "0.00",
+        "net": "853.13"
+      }
+    }
+  ]
+}

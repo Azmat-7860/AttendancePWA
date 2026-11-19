@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monthly Attendance Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Oriya:wght@400;600;700&display=swap');
+
+    @page {
+      size: A4 landscape;
+      margin: 8mm 6mm 10mm 6mm;
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Oriya', 'Nirmala UI', sans-serif;
+      font-size: 7.5pt;
+      color: #111827;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid #1e293b;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .org-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .sub-meta {
+      font-size: 8pt;
+      color: #475569;
+    }
+
+    .badge-bar {
+      text-align: right;
+      font-size: 7.5pt;
+      color: #64748b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      page-break-inside: auto;
+    }
+
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 2px 1px;
+      text-align: center;
+      font-size: 7pt;
+      line-height: 1.1;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    th.th-name {
+      text-align: left;
+      padding-left: 4px;
+      width: 140px;
+    }
+
+    td.w-id {
+      width: 20px;
+      color: #64748b;
+    }
+
+    td.w-name {
+      text-align: left;
+      padding-left: 4px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .sunday {
+      background-color: #fee2e2 !important;
+      color: #991b1b;
+      font-weight: 600;
+    }
+
+    .status-P { color: #047857; font-weight: 600; }
+    .status-A { color: #b91c1c; font-weight: 600; }
+    .status-H { color: #b45309; font-weight: 600; }
+
+    .tot {
+      background-color: #f8fafc;
+      font-weight: 600;
+      width: 22px;
+    }
+
+    .tot.payable {
+      background-color: #ecfdf5;
+      color: #065f46;
+      font-weight: 700;
+      width: 28px;
+    }
+
+    .footer {
+      margin-top: 6px;
+      font-size: 7pt;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="report-header">
+    <div>
+      <div class="org-title">Apex Infra Projects Ltd. — Monthly Attendance Report</div>
+      <div class="sub-meta">Site: <strong>Site Alpha (Tower B Construction)</strong> &nbsp;|&nbsp; Period: <strong>October 2026</strong> (31 Days)</div>
+    </div>
+    <div class="badge-bar">
+      <div>Report ID: <strong>REP-2026-10-v1</strong></div>
+      <div>Data as of: <strong>2026-11-01 06:00:00 UTC</strong></div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">#</th>
+        <th rowspan="2" class="th-name">Worker Name</th>
+        <th colspan="31">Daily Attendance (October 2026)</th>
+        <th colspan="5">Summary Totals</th>
+      </tr>
+      <tr>
+        <th class="">1</th><th class="">2</th><th class="">3</th><th class="sunday">4</th><th class="">5</th><th class="">6</th><th class="">7</th><th class="">8</th><th class="">9</th><th class="">10</th><th class="sunday">11</th><th class="">12</th><th class="">13</th><th class="">14</th><th class="">15</th><th class="">16</th><th class="">17</th><th class="sunday">18</th><th class="">19</th><th class="">20</th><th class="">21</th><th class="">22</th><th class="">23</th><th class="">24</th><th class="sunday">25</th><th class="">26</th><th class="">27</th><th class="">28</th><th class="">29</th><th class="">30</th><th class="">31</th>
+        <th>P</th>
+        <th>H</th>
+        <th>A</th>
+        <th>OT</th>
+        <th>Pay</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="w-id">1</td>
+        <td class="w-name">John Smith</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">0</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">2</td>
+        <td class="w-name">Michael Johnson</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">1</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">3</td>
+        <td class="w-name">David Williams</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">4</td>
+        <td class="w-name">James Brown</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">5</td>
+        <td class="w-name">Robert Jones</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">6</td>
+        <td class="w-name">William Davis</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">7</td>
+        <td class="w-name">Joseph Miller</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">8</td>
+        <td class="w-name">Thomas Wilson</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">9</td>
+        <td class="w-name">Charles Moore</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">10</td>
+        <td class="w-name">Daniel Taylor</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">11</td>
+        <td class="w-name">Matthew Anderson</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">12</td>
+        <td class="w-name">Anthony Thomas</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">13</td>
+        <td class="w-name">Donald Jackson</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">14</td>
+        <td class="w-name">Mark White</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">15</td>
+        <td class="w-name">Paul Harris</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">16</td>
+        <td class="w-name">Steven Martin</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">17</td>
+        <td class="w-name">Andrew Thompson</td>
+        <td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">18</td>
+        <td class="w-name">Kenneth Garcia</td>
+        <td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">19</td>
+        <td class="w-name">Joshua Martinez</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">20</td>
+        <td class="w-name">Kevin Robinson</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">0</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">21</td>
+        <td class="w-name">Brian Clark</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">22</td>
+        <td class="w-name">George Rodriguez</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">23</td>
+        <td class="w-name">Edward Lewis</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">24</td>
+        <td class="w-name">Ronald Lee</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">25</td>
+        <td class="w-name">Timothy Walker</td>
+        <td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">26</td>
+        <td class="w-name">Jason Hall</td>
+        <td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td>
+        <td class="tot">23</td>
+        <td class="tot">2</td>
+        <td class="tot">2</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">24.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">27</td>
+        <td class="w-name">Jeffrey Allen</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">28</td>
+        <td class="w-name">Ryan Young</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">29</td>
+        <td class="w-name">Jacob King</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">30</td>
+        <td class="w-name">Gary Wright</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">31</td>
+        <td class="w-name">Nicholas Scott</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">32</td>
+        <td class="w-name">Eric Green</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">33</td>
+        <td class="w-name">Stephen Adams</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">34</td>
+        <td class="w-name">Jonathan Baker</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">35</td>
+        <td class="w-name">राम कुमार शर्मा</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">36</td>
+        <td class="w-name">सुरेश सिंह</td>
+        <td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">37</td>
+        <td class="w-name">दिनेश यादव</td>
+        <td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">38</td>
+        <td class="w-name">अमित कुमार वर्मा</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">39</td>
+        <td class="w-name">मनोज कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">0</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">40</td>
+        <td class="w-name">राजेश प्रजापति</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">41</td>
+        <td class="w-name">विकास कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">42</td>
+        <td class="w-name">संदीप कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">43</td>
+        <td class="w-name">पंकज गुप्ता</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">1</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">44</td>
+        <td class="w-name">संजय कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">45</td>
+        <td class="w-name">राहुल मिश्रा</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">46</td>
+        <td class="w-name">अनिल कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">47</td>
+        <td class="w-name">सुनील कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">48</td>
+        <td class="w-name">विनोद कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">49</td>
+        <td class="w-name">धर्मेन्द्र सिंह</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">50</td>
+        <td class="w-name">मुकेश पटेल</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">51</td>
+        <td class="w-name">कमलेश चौहान</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">52</td>
+        <td class="w-name">प्रदीप कुमार</td>
+        <td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">23</td>
+        <td class="tot">2</td>
+        <td class="tot">2</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">24.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">53</td>
+        <td class="w-name">जितेंद्र कुमार</td>
+        <td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">54</td>
+        <td class="w-name">संतोष कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">55</td>
+        <td class="w-name">राकेश कुमार</td>
+        <td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">56</td>
+        <td class="w-name">सोनू कुमार</td>
+        <td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">57</td>
+        <td class="w-name">दीपक कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">58</td>
+        <td class="w-name">अशोक कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">0</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">59</td>
+        <td class="w-name">महेश प्रसाद</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">60</td>
+        <td class="w-name">विजय कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">61</td>
+        <td class="w-name">अरविन्द कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">62</td>
+        <td class="w-name">सत्येंद्र यादव</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">63</td>
+        <td class="w-name">ब्रजेश कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">1</td>
+        <td class="tot">0</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">26.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">64</td>
+        <td class="w-name">रोहित कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">65</td>
+        <td class="w-name">आलोक सिंह</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">66</td>
+        <td class="w-name">गोविंद कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">67</td>
+        <td class="w-name">हेमंत कुमार</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">68</td>
+        <td class="w-name">ରବୀନ୍ଦ୍ର କୁମାର ପ୍ରଧାନ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">69</td>
+        <td class="w-name">ବିଜୟ କୁମାର ମହାପାତ୍ର</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">70</td>
+        <td class="w-name">ମନୋଜ କୁମାର ନାୟକ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">1</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">71</td>
+        <td class="w-name">ସୁବାସ ଚନ୍ଦ୍ର ବେହେରା</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">72</td>
+        <td class="w-name">ଅଶୋକ କୁମାର ଦାସ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">73</td>
+        <td class="w-name">ରାଜେଶ କୁମାର ମିଶ୍ର</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">74</td>
+        <td class="w-name">ଦିଲ୍ଲୀପ କୁମାର ରାଉତ</td>
+        <td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">75</td>
+        <td class="w-name">ସୁରେଶ ଚନ୍ଦ୍ର ମାଝୀ</td>
+        <td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">76</td>
+        <td class="w-name">ପ୍ରଦୀପ୍ତ କୁମାର ସାହୁ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">77</td>
+        <td class="w-name">ଜିତେନ୍ଦ୍ର କୁମାର ତ୍ରିପାଠୀ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td>
+        <td class="tot">26</td>
+        <td class="tot">0</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">78</td>
+        <td class="w-name">କାଳିଆ ମହାନ୍ତି</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">79</td>
+        <td class="w-name">ଜଗନ୍ନାଥ ସାହୁ</td>
+        <td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">80</td>
+        <td class="w-name">ବସନ୍ତ କୁମାର ଜେନା</td>
+        <td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">1</td>
+        <td class="tot">2</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">24.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">81</td>
+        <td class="w-name">କିଶୋର ଚନ୍ଦ୍ର ପରିଡ଼ା</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">82</td>
+        <td class="w-name">ତାରିଣୀ ଚରଣ ପଣ୍ଡା</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">83</td>
+        <td class="w-name">ପ୍ରକାଶ ଚନ୍ଦ୍ର ସାମଲ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">84</td>
+        <td class="w-name">ରଶ୍ମି ରଞ୍ଜନ ସ୍ୱାଇଁ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">85</td>
+        <td class="w-name">ଦେବରାଜ ମହାନ୍ତି</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">86</td>
+        <td class="w-name">ଲକ୍ଷ୍ମୀଧର ତରେଇ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">87</td>
+        <td class="w-name">ନାରାୟଣ ଚନ୍ଦ୍ର ବାରିକ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">88</td>
+        <td class="w-name">ଶ୍ରୀକାନ୍ତ କୁମାର ବେହେରା</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">89</td>
+        <td class="w-name">ସଞ୍ଜୟ କୁମାର ଦଳେଇ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">90</td>
+        <td class="w-name">ମାନସ ରଞ୍ଜନ ସାହୁ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">2</td>
+        <td class="tot">0</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">91</td>
+        <td class="w-name">ସଚ୍ଚିଦାନନ୍ଦ ଷଡ଼ଙ୍ଗୀ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">92</td>
+        <td class="w-name">ଅନାମ ଚରଣ ମଲ୍ଲିକ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">93</td>
+        <td class="w-name">ଭବାନୀ ଶଙ୍କର ଦାଶ</td>
+        <td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">94</td>
+        <td class="w-name">ତୁଷାର କାନ୍ତ ପଟ୍ଟନାୟକ</td>
+        <td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">24</td>
+        <td class="tot">2</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">95</td>
+        <td class="w-name">ସତ୍ୟନାରାୟଣ ସିଂ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">96</td>
+        <td class="w-name">ହୃଷୀକେଶ ବେହେରା</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">0</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">26.0</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">97</td>
+        <td class="w-name">ଚିତ୍ତରଞ୍ଜନ ପ୍ରଧାନ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">26</td>
+        <td class="tot">1</td>
+        <td class="tot">0</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">26.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">98</td>
+        <td class="w-name">କଳ୍ପତରୁ ଜେନା</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">99</td>
+        <td class="w-name">ଶରତ ଚନ୍ଦ୍ର ବାରିକ</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">2h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+      <tr>
+        <td class="w-id">100</td>
+        <td class="w-name">କୃଷ୍ଣ ଚନ୍ଦ୍ର ପାତ୍ର</td>
+        <td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-A">A</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-H">H</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day sunday">WO</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td><td class="day status-P">P</td>
+        <td class="tot">25</td>
+        <td class="tot">1</td>
+        <td class="tot">1</td>
+        <td class="tot">0h</td>
+        <td class="tot payable">25.5</td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <span>Legend: P = Present (1.0), H = Half-Day (0.5), A = Absent (0), WO = Weekly Off. Overtime in hours.</span>
+    <span>Generated by Worker Attendance System &nbsp;|&nbsp; Confidential</span>
+  </div>
+
+</body>
+</html>

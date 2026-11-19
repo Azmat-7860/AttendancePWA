@@ -1,0 +1,9 @@
+{
+  "name": "spike-offline-sync",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Spike exploring offline-first outbox, auto-sync debounce, restart survival, and idempotency",
+  "scripts": {
+    "start": "node runSpike.mjs"
+  }
+}

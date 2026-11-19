@@ -36,3 +36,18 @@ test-results/
 # Database local storage
 postgres-data/
 
+# Documentation & Agent Instructions
+AGENTS.md
+docs/
+
+# AI Prompts
+prompt/
+prompts/
+.prompts/
+*.prompt
+*.prompt.*
+*prompt*.md
+*prompt*.txt
+*prompt*.json
+*prompt*.yaml
+*prompt*.yml

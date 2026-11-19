@@ -3,18 +3,6 @@
 Task list for the Worker Attendance PWA. Work on one task at a time, in order, and do not start a task before the tasks it depends on are done.
 Tick the box only when every acceptance criterion (AC) is met.
 
-## How to give a task to the AI
-
-Use this prompt, changing the task id and TRD sections:
-
-```text
-Read AGENTS.md. Your task is T2-05 in docs/TASKS.md.
-Read TRD sections 6 and 11 and any PRD sections the task references.
-First give me a plan: files to change, approach, risks and questions. Do not write code until I approve the plan.
-After coding: add tests, run lint, typecheck and tests, then report what changed and how I can verify it.
-```
-
-Start a fresh session for each task so earlier conversation does not leak in.
 
 ---
 
@@ -25,10 +13,10 @@ Start a fresh session for each task so earlier conversation does not leak in.
   - AC: `web` and `api` both start locally; `GET /health` on the API returns OK.
   - AC: lint, typecheck and test commands from AGENTS.md section 4 all run (even with placeholder tests).
   - AC: `README.md` has exact setup steps; `.env.example` lists every variable with no real secrets.
-- [ ] **T0-02 CI pipeline** (TRD 16). Depends: T0-01
+- [x] **T0-02 CI pipeline** (TRD 16). Depends: T0-01
   - AC: GitHub Actions runs web lint, typecheck and tests, and api `verify` with Testcontainers on every pull request.
   - AC: a failing test blocks the check.
-- [ ] **T0-03 Payroll fixtures** (TRD 12). Depends: T0-01
+- [x] **T0-03 Payroll fixtures** (TRD 12). Depends: T0-01
   - AC: `shared/fixtures/payroll.json` holds the cases below with inputs and expected outputs.
   - AC: a short README in that folder explains the JSON format.
   - Case A: daily wage 600, standard hours 8, multiplier 1.5, 24 present days, 2 half-days, 6 overtime hours in the period, advances recovered 3,000.
@@ -38,12 +26,12 @@ Start a fresh session for each task so earlier conversation does not leak in.
   - Case C (overtime rounding): daily wage 600, standard hours 8, multiplier 1.5, one day worked 10 h 20 min, no advances.
     Overtime is 2 h 20 min, rounded down to 15-minute steps = 2 h 15 min = 2.25 h.
     Expected: overtime pay 253.13 (2.25 × 75 × 1.5 = 253.125, rounded HALF_UP); gross 853.13; net 853.13.
-- [ ] **T0-04 Spike: offline sync** (TRD 11). Depends: T0-01
+- [x] **T0-04 Spike: offline sync** (TRD 11). Depends: T0-01
   - Throwaway code in a `spikes/` folder, not in `web` or `api`.
   - AC: with the network off, mark attendance, close and reopen the app, then go online: the data reaches the server on its own within about 2 seconds.
   - AC: sending the same mutation twice creates one record.
   - AC: a short written result says what worked, what broke, and what to change in the TRD.
-- [ ] **T0-05 Spike: PDF with Hindi and Odia names** (TRD 13). Depends: T0-01
+- [x] **T0-05 Spike: PDF with Hindi and Odia names** (TRD 13). Depends: T0-01
   - AC: a PDF with a 100-worker by 31-day grid on A4 landscape renders with English, Hindi and Odia names, with no empty boxes.
   - AC: generation time and file size are measured and written down.
   - AC: the result confirms the library choice (OpenPDF or Apache PDFBox) or recommends a change.
