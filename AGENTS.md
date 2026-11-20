@@ -87,6 +87,19 @@ Before saying a task is done, run lint, typecheck and tests for every part you t
 - Validate all input: Bean Validation on the API, Zod on the client. Use parameterized queries only.
 - Every new endpoint needs authorization checks and a test proving another tenant cannot access its data.
 
+### Logging and observability
+
+- Never log tokens, secrets, credentials, or personal data (phone numbers, emails, worker names). Log entity IDs only (`workerId`, `organizationId`).
+- Use appropriate SLF4J log levels:
+  - `log.debug(...)`: Detailed execution traces, request/response diagnostics, intermediate calculations. Silent in production.
+  - `log.info(...)`: Major lifecycle milestones only (application startup, batch sync finished, month-end report sent).
+  - `log.warn(...)`: Recoverable anomalies (e.g. sync retry, rate limit approached).
+  - `log.error(...)`: Unhandled exceptions, failed report jobs, critical errors.
+- Zero code changes between environments: dev vs prod behavior is driven strictly by configuration (`SPRING_PROFILES_ACTIVE=dev` vs `SPRING_PROFILES_ACTIVE=prod`).
+  - In `dev`: Root is `INFO`, `com.attendance` is `DEBUG`, SQL logging is optional `DEBUG`.
+  - In `prod`: Root is `WARN`, `com.attendance` is `INFO`, SQL logging is `OFF`. All `log.debug(...)` calls are silently skipped with zero overhead.
+- Frontend (web): Do not use naked `console.log` in production code. Use an environment-aware helper gated by `import.meta.env.DEV` so debug output is excluded from production builds.
+
 ### Data
 
 - IDs are UUIDs, generated on the client for records created offline.

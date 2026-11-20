@@ -374,6 +374,14 @@ Monthly report PDFs contain personal data and are sent by email. Recipients are 
 
 Structured JSON logs with a request ID, Spring Boot Actuator health and metrics (secured), Sentry on both frontend and backend, an in-app sync diagnostics screen (pending count, last error), and an uptime check on /health.
 
+### 17.1 Environment-Aware Logging Strategy
+- **Zero code changes**: Switching between development and production log verbosity is managed strictly via configuration profiles (`SPRING_PROFILES_ACTIVE=dev` vs `SPRING_PROFILES_ACTIVE=prod`).
+- **Log Levels by Profile**:
+  - `dev`: Root logger at `INFO`, application package (`com.attendance`) at `DEBUG`, Hibernate SQL queries logged at `DEBUG` with parameter descriptors at `TRACE`.
+  - `prod`: Root logger at `WARN`, application package (`com.attendance`) at `INFO`, Hibernate SQL logging turned `OFF`. All `log.debug(...)` calls are automatically and completely suppressed with zero runtime performance cost.
+- **Security & PII Rules**: Never log credentials, JWTs, Google tokens, phone numbers, worker names, or email addresses. Log only internal IDs (`worker_id`, `site_id`, `organization_id`, `mutation_id`).
+- **Frontend logging**: Web client uses environment guards (`import.meta.env.DEV`) so debug console outputs are eliminated in production builds.
+
 ## 18. Testing Strategy
 
 - **Unit:** payroll and overtime calculations against shared JSON fixtures in Java and TypeScript.

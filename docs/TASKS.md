@@ -38,12 +38,12 @@ Tick the box only when every acceptance criterion (AC) is met.
 
 ## T1: Foundation (weeks 1 and 2)
 
-- [ ] **T1-01 Database schema** (TRD 9). Depends: T0-01
+- [x] **T1-01 Database schema** (TRD 9). Depends: T0-01
   - AC: Flyway `V1` creates every table in TRD section 9 with `organization_id`, `created_at`, `updated_at`, `deleted_at` and `server_version` where specified.
   - AC: unique and index rules from the TRD exist, including attendance unique on `(worker_id, site_id, work_date)`.
   - AC: a Testcontainers test applies all migrations to an empty database.
   - AC: I review the schema before further work builds on it.
-- [ ] **T1-02 Tenant context** (TRD 7). Depends: T1-01
+- [x] **T1-02 Tenant context** (TRD 7). Depends: T1-01
   - AC: the tenant comes only from the authenticated user; repositories filter by it.
   - AC: a test shows that organization B cannot read or change organization A's rows.
 - [ ] **T1-03 Google sign-in API** (TRD 8). Depends: T1-02
