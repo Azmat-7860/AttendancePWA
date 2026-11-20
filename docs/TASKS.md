@@ -46,7 +46,7 @@ Tick the box only when every acceptance criterion (AC) is met.
 - [x] **T1-02 Tenant context** (TRD 7). Depends: T1-01
   - AC: the tenant comes only from the authenticated user; repositories filter by it.
   - AC: a test shows that organization B cannot read or change organization A's rows.
-- [ ] **T1-03 Google sign-in API** (TRD 8). Depends: T1-02
+- [x] **T1-03 Google sign-in API** (TRD 8). Depends: T1-02
   - AC: `POST /auth/google` verifies signature, issuer, audience, expiry and `email_verified`.
   - AC: only invited emails get tokens; others get 403.
   - AC: the access JWT lasts about 15 minutes; the refresh token is stored hashed, rotates on use, and is sent as an HttpOnly Secure cookie.
