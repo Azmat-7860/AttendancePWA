@@ -20,7 +20,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Testcontainers
+@Testcontainers(disabledWithoutDocker = true)
 class DatabaseMigrationTest {
 
     private static boolean isDockerAvailable() {
