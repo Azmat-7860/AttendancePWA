@@ -52,10 +52,10 @@ Tick the box only when every acceptance criterion (AC) is met.
   - AC: the access JWT lasts about 15 minutes; the refresh token is stored hashed, rotates on use, and is sent as an HttpOnly Secure cookie.
   - AC: `POST /auth/refresh`, `POST /auth/logout` and `GET /me` work. Reusing an old refresh token revokes the session.
   - AC: tests use mocked Google keys and cover bad audience, expired token and unknown email.
-- [ ] **T1-04 Roles and permissions** (TRD 8). Depends: T1-03
+- [x] **T1-04 Roles and permissions** (TRD 8). Depends: T1-03
   - AC: Owner and Supervisor permissions follow the TRD table; checks use method-level security.
   - AC: tests prove a Supervisor cannot do Owner-only actions.
-- [ ] **T1-05 User invitations** (TRD 8). Depends: T1-04
+- [x] **T1-05 User invitations** (TRD 8). Depends: T1-04
   - AC: the Owner can invite a Supervisor by Google email, list users, and deactivate a user.
   - AC: a deactivated user loses access immediately.
 - [ ] **T1-06 Sites API** (TRD 10). Depends: T1-04

@@ -51,3 +51,4 @@ prompts/
 *prompt*.json
 *prompt*.yaml
 *prompt*.yml
+.env.example

@@ -8,8 +8,8 @@ spring:
     active: ${SPRING_PROFILES_ACTIVE:dev}
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/attendance_db}
-    username: ${SPRING_DATASOURCE_USERNAME:attendance}
-    password: ${SPRING_DATASOURCE_PASSWORD:attendance}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:Azm@t#78600}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
