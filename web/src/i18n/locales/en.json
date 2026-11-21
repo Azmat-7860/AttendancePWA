@@ -1,0 +1,63 @@
+{
+  "app": {
+    "title": "Worker Attendance",
+    "subtitle": "Contractor & Supervisor Attendance Management",
+    "offlineNotice": "Working in Offline Safety Mode"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "attendance": "Attendance",
+    "workers": "Workers",
+    "sites": "Sites",
+    "team": "Team & Access",
+    "logout": "Sign Out"
+  },
+  "sync": {
+    "synced": "All changes saved to server",
+    "syncing": "Syncing changes...",
+    "notSynced": "Unsynced changes stored on device",
+    "needsAttention": "Needs attention: retry required"
+  },
+  "auth": {
+    "signInTitle": "Sign In to Your Organization",
+    "signInSubtitle": "Supervisors and Owners only. Workers do not log in.",
+    "googleSignIn": "Continue with Google",
+    "devSwitcherTitle": "Developer Quick-Login (Local Testing)",
+    "loginAsOwner": "Sign in as Owner (Alice)",
+    "loginAsSupervisor": "Sign in as Supervisor (Bob)",
+    "loggingIn": "Signing in...",
+    "loginFailed": "Authentication failed. Make sure your email is invited.",
+    "roleBadgeOwner": "Owner",
+    "roleBadgeSupervisor": "Supervisor",
+    "authenticatedAs": "Signed in as"
+  },
+  "team": {
+    "title": "Team & Access Control",
+    "subtitle": "Manage invited supervisors and owners across your job sites.",
+    "inviteButton": "Invite Member",
+    "inviteModalTitle": "Invite Team Member",
+    "inviteEmailLabel": "Google Email Address",
+    "inviteEmailPlaceholder": "e.g. supervisor@company.com",
+    "inviteNameLabel": "Full Name",
+    "inviteNamePlaceholder": "e.g. Ramesh Kumar",
+    "inviteRoleLabel": "Access Role",
+    "roleOwner": "Owner (Full Admin Access)",
+    "roleSupervisor": "Supervisor (Attendance & Worker Management)",
+    "cancel": "Cancel",
+    "sendInvite": "Send Invitation",
+    "statusActive": "Active",
+    "statusDeactivated": "Deactivated",
+    "deactivate": "Deactivate",
+    "reactivate": "Reactivate",
+    "changeRole": "Change Role",
+    "ownerOnlyNotice": "Only Owners can invite new team members or alter permissions.",
+    "noUsersFound": "No team members found."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "success": "Success",
+    "close": "Close"
+  }
+}

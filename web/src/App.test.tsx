@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import './i18n/config';
 
 describe('App', () => {
-  it('renders the application title and ready status', () => {
+  it('renders login screen when unauthenticated', () => {
     render(<App />);
-    expect(screen.getByText('Worker Attendance PWA')).toBeInTheDocument();
-    expect(screen.getByText('System Shell Ready')).toBeInTheDocument();
+    expect(screen.getByText('Worker Attendance')).toBeInTheDocument();
+    expect(screen.getByText('Sign in as Owner (Alice)')).toBeInTheDocument();
   });
 });
-
