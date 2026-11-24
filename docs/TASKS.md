@@ -58,9 +58,9 @@ Tick the box only when every acceptance criterion (AC) is met.
 - [x] **T1-05 User invitations** (TRD 8). Depends: T1-04
   - AC: the Owner can invite a Supervisor by Google email, list users, and deactivate a user.
   - AC: a deactivated user loses access immediately.
-- [ ] **T1-06 Sites API** (TRD 10). Depends: T1-04
+- [x] **T1-06 Sites API** (TRD 10). Depends: T1-04
   - AC: create, edit, deactivate and list sites, scoped to the tenant, with validation and tests.
-- [ ] **T1-07 Workers API** (TRD 9, 10). Depends: T1-06
+- [x] **T1-07 Workers API** (TRD 9, 10). Depends: T1-06
   - AC: create, edit, deactivate and list workers with name, phone, skill, pay type (DAILY, HOURLY, MONTHLY) and rate.
   - AC: workers can be assigned to sites with a from-date and to-date.
   - AC: deactivated workers keep history and drop out of the daily list.

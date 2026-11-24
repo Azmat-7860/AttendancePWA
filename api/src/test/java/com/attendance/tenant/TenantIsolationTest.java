@@ -2,8 +2,8 @@ package com.attendance.tenant;
 
 import com.attendance.org.Organization;
 import com.attendance.org.OrganizationRepository;
-import com.attendance.site.Site;
-import com.attendance.site.SiteRepository;
+import com.attendance.site.entity.Site;
+import com.attendance.site.repository.SiteRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeAll;

@@ -103,6 +103,7 @@ public class AuthServiceImpl implements AuthService {
             }
 
             if (token.isExpired()) {
+                log.warn("Expired refresh token presented for user: {}", token.getUserId());
                 throw new BadCredentialsException("Refresh token has expired. Please sign in again.");
             }
 
@@ -113,6 +114,7 @@ public class AuthServiceImpl implements AuthService {
                     .filter(User::isActive)
                     .orElseThrow(() -> new AccessDeniedException("User is no longer active"));
 
+            log.debug("Rotated refresh token for user: {}", user.getId());
             return createSessionTokens(user);
         } finally {
             TenantContext.clear();
@@ -154,6 +156,7 @@ public class AuthServiceImpl implements AuthService {
         RefreshToken refreshToken = new RefreshToken(user.getId(), tokenHash, expiresAt);
         refreshToken.setOrganizationId(user.getOrganizationId());
         refreshTokenRepository.save(refreshToken);
+        log.info("Issued new session tokens for user: {} under org: {}", user.getId(), user.getOrganizationId());
 
         UserSummary summary = new UserSummary(
                 user.getId(),

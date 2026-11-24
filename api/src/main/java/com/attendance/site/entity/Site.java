@@ -1,11 +1,9 @@
-package com.attendance.site;
+package com.attendance.site.entity;
 
 import com.attendance.common.entity.BaseTenantEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-
-import java.util.UUID;
 
 /**
  * Site entity representing a work site or construction location under an organization.
