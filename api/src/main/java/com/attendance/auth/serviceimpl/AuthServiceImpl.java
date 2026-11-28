@@ -37,6 +37,7 @@ public class AuthServiceImpl implements AuthService {
     private final GoogleTokenVerifier googleTokenVerifier;
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final com.attendance.org.OrganizationRepository organizationRepository;
     private final JwtService jwtService;
     private final Duration refreshExpiration;
 
@@ -44,12 +45,14 @@ public class AuthServiceImpl implements AuthService {
             GoogleTokenVerifier googleTokenVerifier,
             UserRepository userRepository,
             RefreshTokenRepository refreshTokenRepository,
+            com.attendance.org.OrganizationRepository organizationRepository,
             JwtService jwtService,
             @Value("${app.auth.jwt-refresh-expiration-days:30}") long refreshExpirationDays
     ) {
         this.googleTokenVerifier = googleTokenVerifier;
         this.userRepository = userRepository;
         this.refreshTokenRepository = refreshTokenRepository;
+        this.organizationRepository = organizationRepository;
         this.jwtService = jwtService;
         this.refreshExpiration = Duration.ofDays(refreshExpirationDays);
     }
@@ -139,6 +142,42 @@ public class AuthServiceImpl implements AuthService {
                 TenantContext.clear();
             }
         });
+    }
+
+    @Override
+    @Transactional
+    public AuthResult devLogin(com.attendance.user.entity.Role role) {
+        java.util.List<com.attendance.org.Organization> orgs = organizationRepository.findAll();
+        com.attendance.org.Organization org;
+        if (orgs.isEmpty()) {
+            org = new com.attendance.org.Organization();
+            org.setName("Acme Builders");
+            org = organizationRepository.save(org);
+        } else {
+            org = orgs.get(0);
+        }
+
+        String email = (role == com.attendance.user.entity.Role.OWNER)
+                ? "owner@acme.example.com"
+                : "supervisor@acme.example.com";
+        String name = (role == com.attendance.user.entity.Role.OWNER)
+                ? "Alice Owner"
+                : "Bob Supervisor";
+
+        UUID orgId = org.getId();
+        TenantContext.setTenantId(orgId);
+        try {
+            User user = userRepository.findByEmailIgnoreCaseAndActiveTrue(email)
+                    .orElseGet(() -> {
+                        User newUser = new User(email, name, role);
+                        newUser.setOrganizationId(orgId);
+                        return userRepository.save(newUser);
+                    });
+            log.info("Developer login for role: {} with user id: {} under org: {}", role, user.getId(), orgId);
+            return createSessionTokens(user);
+        } finally {
+            TenantContext.clear();
+        }
     }
 
     private AuthResult createSessionTokens(User user) {

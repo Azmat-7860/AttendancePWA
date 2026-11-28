@@ -64,11 +64,11 @@ Tick the box only when every acceptance criterion (AC) is met.
   - AC: create, edit, deactivate and list workers with name, phone, skill, pay type (DAILY, HOURLY, MONTHLY) and rate.
   - AC: workers can be assigned to sites with a from-date and to-date.
   - AC: deactivated workers keep history and drop out of the daily list.
-- [ ] **T1-08 PWA shell** (TRD 6). Depends: T0-01
+- [x] **T1-08 PWA shell** (TRD 6). Depends: T0-01
   - AC: valid manifest, service worker precaching the app shell, installable on Android Chrome, opens with no network after the first visit.
   - AC: when a new version is available, the app asks the user to reload and never reloads mid-edit.
   - AC: Tailwind, routing, the base layout and i18n with `en.json` are set up.
-- [ ] **T1-09 Login screen** (TRD 8). Depends: T1-03, T1-08
+- [x] **T1-09 Login screen** (TRD 8). Depends: T1-03, T1-08
   - AC: "Sign in with Google" works end to end; the session survives app restarts; protected routes redirect to login.
   - AC: a supervisor stays signed in while offline for several days using the cached session.
 - [ ] **T1-10 Staging deployment** (TRD 16). Depends: T1-09, T0-02

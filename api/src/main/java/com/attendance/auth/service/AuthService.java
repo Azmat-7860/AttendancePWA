@@ -9,4 +9,6 @@ public interface AuthService {
     AuthResult rotateRefreshToken(String rawRefreshToken);
 
     void logout(String rawRefreshToken);
+
+    AuthResult devLogin(com.attendance.user.entity.Role role);
 }

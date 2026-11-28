@@ -3,7 +3,102 @@
 @tailwind utilities;
 
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Agrave Pro", "Federant", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color-scheme: light;
 }
 
+@layer base {
+  html,
+  body {
+    font-family: "Agrave Pro", "Federant", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+@keyframes sceneBreathe {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-1px); }
+}
+
+@keyframes workerTapArm {
+  0%, 100% { transform: rotate(0deg); }
+  28% { transform: rotate(-10deg) translate(1.2px, -0.8px); }
+  42% { transform: rotate(1.5deg) translate(2px, 0px); }
+  65% { transform: rotate(0deg); }
+}
+
+@keyframes attendanceTickDraw {
+  0%, 30% { stroke-dashoffset: 24; opacity: 0.3; }
+  44%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 24; opacity: 0.3; }
+}
+
+@keyframes attendanceRipple {
+  0%, 36% { transform: scale(0.7); opacity: 0; }
+  45% { transform: scale(1); opacity: 0.55; }
+  72%, 100% { transform: scale(1.7); opacity: 0; }
+}
+
+@keyframes supervisorWrite {
+  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+  20% { transform: translate(-1.5px, 1px) rotate(-3.5deg); }
+  45% { transform: translate(0.8px, 2.2px) rotate(2.5deg); }
+  70% { transform: translate(-1px, 1.2px) rotate(-2deg); }
+}
+
+@keyframes craneSway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+@keyframes ownerSurvey {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(3.5deg); }
+}
+
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.anim-breathe {
+  animation: sceneBreathe 3.8s ease-in-out infinite;
+}
+.anim-worker-tap {
+  transform-origin: 60px 109px;
+  animation: workerTapArm 3.2s ease-in-out infinite;
+}
+.anim-tick-draw {
+  stroke-dasharray: 24;
+  animation: attendanceTickDraw 3.2s ease-in-out infinite;
+}
+.anim-tick-ripple {
+  transform-origin: 118px 111px;
+  animation: attendanceRipple 3.2s ease-out infinite;
+}
+.anim-supervisor-write {
+  transform-origin: 315px 109px;
+  animation: supervisorWrite 2.4s ease-in-out infinite;
+}
+.anim-crane-sway {
+  transform-origin: 158px 24px;
+  animation: craneSway 7.5s ease-in-out infinite;
+}
+.anim-owner-survey {
+  transform-origin: 208px 94px;
+  animation: ownerSurvey 5s ease-in-out infinite;
+}
+.anim-card-enter {
+  animation: fadeSlideUp 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-breathe,
+  .anim-worker-tap,
+  .anim-tick-draw,
+  .anim-tick-ripple,
+  .anim-supervisor-write,
+  .anim-crane-sway,
+  .anim-owner-survey,
+  .anim-card-enter {
+    animation: none;
+  }
+}

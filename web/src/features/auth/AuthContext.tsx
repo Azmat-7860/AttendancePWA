@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AuthContext, Role, UserProfile } from './authContextDef';
 import { logger } from '../../lib/logger';
 
@@ -9,6 +9,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // Restore cached session on launch (works 100% offline)
   useEffect(() => {
     try {
       const cached = localStorage.getItem(STORAGE_KEY);
@@ -26,6 +27,45 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsLoading(false);
     }
   }, []);
+
+  const refreshSession = useCallback(async () => {
+    if (!navigator.onLine) {
+      logger.debug('Device is offline, keeping local cached session active');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/v1/auth/refresh', { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        setUser(data.user);
+        setAccessToken(data.accessToken);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ user: data.user, accessToken: data.accessToken }));
+        logger.debug('Rotated access token successfully for user ID:', data.user.id);
+      }
+    } catch {
+      // Network hiccup: keep local session
+      logger.warn('Token refresh failed (network down). Preserving offline session.');
+    }
+  }, []);
+
+  // Proactive periodic token refresh every 10 minutes while online
+  useEffect(() => {
+    if (!user) return;
+    const interval = setInterval(() => {
+      refreshSession();
+    }, 10 * 60 * 1000);
+
+    const onOnline = () => {
+      refreshSession();
+    };
+    window.addEventListener('online', onOnline);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('online', onOnline);
+    };
+  }, [user, refreshSession]);
 
   const loginWithGoogle = async (idToken: string) => {
     setIsLoading(true);
@@ -54,7 +94,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const devLogin = (role: Role) => {
+  const devLogin = async (role: Role) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`/api/v1/auth/dev-login?role=${role}`, {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const sessionUser: UserProfile = data.user;
+        const token: string = data.accessToken;
+
+        setUser(sessionUser);
+        setAccessToken(token);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ user: sessionUser, accessToken: token }));
+        logger.info('User authenticated via server dev-login for role:', role);
+        return;
+      }
+    } catch (e) {
+      logger.warn('Backend server unreachable, falling back to local offline dev session', e);
+    } finally {
+      setIsLoading(false);
+    }
+
+    // Offline fallback for testing when backend server is off
     const devUser: UserProfile = {
       id: role === 'OWNER' ? '00000000-0000-0000-0000-000000000001' : '00000000-0000-0000-0000-000000000002',
       email: role === 'OWNER' ? 'owner@acme.example.com' : 'supervisor@acme.example.com',
@@ -67,7 +131,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(devUser);
     setAccessToken(mockToken);
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ user: devUser, accessToken: mockToken }));
-    logger.info('Developer logged in with role:', role);
+    logger.info('Offline test session established for role:', role);
   };
 
   const logout = async () => {

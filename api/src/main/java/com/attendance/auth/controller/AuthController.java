@@ -47,6 +47,16 @@ public class AuthController {
                 .body(result.response());
     }
 
+    @PostMapping("/auth/dev-login")
+    public ResponseEntity<AuthResponse> devLogin(@RequestParam(name = "role", defaultValue = "OWNER") com.attendance.user.entity.Role role) {
+        AuthResult result = authService.devLogin(role);
+        ResponseCookie cookie = createRefreshTokenCookie(result.rawRefreshToken(), Duration.ofDays(30));
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(result.response());
+    }
+
     @PostMapping("/auth/refresh")
     public ResponseEntity<AuthResponse> refresh(@CookieValue(name = "refreshToken", required = false) String refreshToken) {
         AuthResult result = authService.rotateRefreshToken(refreshToken);

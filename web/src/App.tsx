@@ -8,6 +8,7 @@ import { AttendanceScreen } from './features/attendance/AttendanceScreen';
 import { WorkersScreen } from './features/workers/WorkersScreen';
 import { SitesScreen } from './features/sites/SitesScreen';
 import { UserManagementScreen } from './features/user/UserManagementScreen';
+import { ReloadPrompt } from './components/common/ReloadPrompt';
 
 const ProtectedRoutes: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -57,6 +58,7 @@ export const App: React.FC = () => {
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <ReloadPrompt />
       </BrowserRouter>
     </AuthProvider>
   );
